@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BiometricReading",
+  "type": "object",
+  "required": ["athleteId", "timestamp", "heartRate"],
+  "properties": {
+    "athleteId": { "type": "string", "format": "uuid" },
+    "timestamp": { "type": "number", "description": "Unix timestamp in milliseconds" },
+    "heartRate": { "type": "number", "minimum": 30, "maximum": 250 },
+    "spo2": { "type": "number", "minimum": 0, "maximum": 100 },
+    "skinTemperature": { "type": "number", "minimum": 25, "maximum": 45 },
+    "coreTemperatureEstimate": { "type": "number" },
+    "sweatRateMlHr": { "type": "number" },
+    "sodiumMmolL": { "type": "number" },
+    "hydrationIndex": { "type": "number", "minimum": 0, "maximum": 1 },
+    "motionArtifact": { "type": "boolean" },
+    "signalQuality": { "type": "string", "enum": ["good", "moderate", "poor"] }
+  }
+}
