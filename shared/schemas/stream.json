@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Stream",
+  "type": "object",
+  "required": ["id", "athleteId", "matchId", "status"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "athleteId": { "type": "string", "format": "uuid" },
+    "matchId": { "type": "string" },
+    "sport": { "type": "string", "enum": ["cricket", "football", "basketball", "tennis"] },
+    "placement": { "type": "string", "enum": ["chest", "shoulder", "back", "helmet", "forearm"] },
+    "resolution": { "type": "string", "enum": ["720p", "1080p", "4k"] },
+    "status": { "type": "string", "enum": ["pending", "live", "paused", "ended", "error"] },
+    "srtUrl": { "type": "string" },
+    "hlsUrl": { "type": "string" },
+    "biometrics": {
+      "type": "object",
+      "properties": {
+        "hr": { "type": "number" },
+        "spo2": { "type": "number" },
+        "temp": { "type": "number" }
+      }
+    }
+  }
+}
