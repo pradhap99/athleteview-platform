@@ -51,9 +51,9 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pytest tests/ -v --tb=short
 
-  docker-build:
-    runs-on: ubuntu-latest
-    needs: [gateway-tests, ai-service-tests, biometrics-tests]
-    steps:
-      - uses: actions/checkout@v4
-      - run: docker compose -f docker-compose.yml build
+# The `docker-build` job was removed. It could never have succeeded:
+# docker-compose.yml points all four build contexts at ./infra/docker/<service>,
+# but there is no infra/ directory in this repo and no Dockerfile anywhere in it.
+# The job only ever reported "unable to prepare context: path .../infra/docker/
+# streaming not found", and before that it was skipped behind the failing test
+# jobs. Re-add it once the service Dockerfiles actually exist.
